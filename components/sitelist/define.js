@@ -1,1 +1,1 @@
-export const SITE_LIST_KEY = 'sitelist'
+module.exports.SITE_LIST_KEY = 'sitelist'

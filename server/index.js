@@ -13,11 +13,11 @@ app.prepare()
   .then(() => {
     const server = express()
     const http = Server(server)
-    
+
     const { db, io } = rtdb.default(http, {}, {
       Adapter: rtdb.JsonFileAdapter,
     })
-    require('./io')(io)
+    require('./io')(io, db)
 
     server.use(require('./static'))
 
