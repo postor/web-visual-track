@@ -9,8 +9,9 @@ import Footer from './Footer'
 export default (Page) => () => (<Provider>
   <div>
     <Head>
+      <link rel="stylesheet" href="/css/font-awesome.min.css" />
+      <link rel="stylesheet" href="/css/materialize.min.css" />      
       <title>web visual track</title>
-      <link rel="stylesheet" href="/css/materialize.min.css" />
     </Head>
     <Header />
     <Container>
