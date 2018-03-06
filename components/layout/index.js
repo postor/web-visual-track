@@ -6,16 +6,17 @@ import { Provider } from 'node-realtime-db-react'
 import Header from './Header'
 import Footer from './Footer'
 
-export default (Page) => () => (<Provider>
+export default (Page) => (props) => (<Provider>
   <div>
     <Head>
       <link rel="stylesheet" href="/css/font-awesome.min.css" />
-      <link rel="stylesheet" href="/css/materialize.min.css" />      
+      <link rel="stylesheet" href="/css/materialize.min.css" />
       <title>web visual track</title>
     </Head>
     <Header />
     <Container>
-      <Page />
+      <Page url={props.url} />
+      <p>{JSON.stringify(props)}</p>
     </Container>
     <Footer />
   </div>
