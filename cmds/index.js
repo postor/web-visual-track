@@ -1,4 +1,4 @@
-const { join } = require('path')
+const moment = require('moment')
 const { SITE_LIST_KEY } = require('../components/sitelist/define')
 
 module.exports.actions = {
@@ -30,6 +30,7 @@ module.exports.actions = {
         if (typeof data.result != 'undefined') {
           comp.setState({ loading: false })
           set(`${SITE_LIST_KEY}.${index}.pass`, data.result == 0)
+          set(`${SITE_LIST_KEY}.${index}.lastTrackTime`, moment().unix())
         }
         set(`${SITE_LIST_KEY}.${index}.logs`, { data, date: new Date() }, 'unshift')
         set(`${SITE_LIST_KEY}.${index}.logs`, [10, 5], 'splice')
