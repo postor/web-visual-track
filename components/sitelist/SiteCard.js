@@ -4,8 +4,10 @@ import Link from 'next/link'
 
 export default (props) => {
   const { remove, site, index } = props
+  const className = typeof site.pass == 'undefined' ? 'blue-grey darken-1' : site.pass ? 'green-grey darken-1' : 'red-grey darken-1'
+
   return (<Card
-    className='blue-grey darken-1'
+    className={className}
     textClassName='white-text'
     title={site.url}
     actions={[

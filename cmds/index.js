@@ -25,13 +25,14 @@ module.exports.actions = {
     click: (param) => {
       const { set, index, io, comp, url } = param
       comp.setState({ loading: true })
-      io.emit({ url, action: 'track' })
+      io.emit('siteaction', { url, action: 'track' })
       io.on('siteactionlog', (data) => {
-        if (data.result) {
+        if (typeof data.result != 'undefined') {
           comp.setState({ loading: false })
           set(`${SITE_LIST_KEY}.${index}.pass`, data.result == 0)
         }
-        set(`${SITE_LIST_KEY}.${index}.logs`, data, 'unshift')
+        set(`${SITE_LIST_KEY}.${index}.logs`, { data, date: new Date() }, 'unshift')
+        set(`${SITE_LIST_KEY}.${index}.logs`, [10, 5], 'splice')
       })
     },
   },
