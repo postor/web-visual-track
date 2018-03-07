@@ -16,6 +16,7 @@ app.prepare()
 
     const { db, io } = rtdb.default(http, {}, {
       Adapter: rtdb.JsonFileAdapter,
+      useLock: true,
     })
     require('./io')(io, db)
 

@@ -4,7 +4,7 @@ const getCrawlAll = (async () => {
   // Init Pupeteer
   const executablePath = `C:\\Users\\josh\\AppData\\Local\\Google\\Chrome SxS\\Application\\chrome.exe`
   const browser = await puppeteer.launch({
-    headless: false,
+    //headless: false,
     executablePath,
   })
   const page = await browser.newPage() // New Page to be manipulated

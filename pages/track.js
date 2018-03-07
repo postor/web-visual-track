@@ -7,7 +7,7 @@ const Track = ({ url = {} }) => {
   const { index } = query
   const Page = getPage(index)
   return (<Section>
-    <Page />
+    <Page index={index} />
   </Section>)
 }
 
