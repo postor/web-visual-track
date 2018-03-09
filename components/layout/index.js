@@ -14,6 +14,8 @@ export default (Page) => (props) => (<Provider>
       <title>web visual track</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <style>{`* { word-break: break-all; }`}</style>
+      <script src="/jquery.min.js" />
+      <script src="/js/materialize.min.js" />
     </Head>
     <Header />
     <Container>

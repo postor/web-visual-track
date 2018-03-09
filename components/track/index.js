@@ -3,6 +3,7 @@ import { Button, Collection, CollectionItem, ProgressBar, Badge } from 'react-ma
 import { connect } from 'node-realtime-db-react'
 import { SITE_LIST_KEY } from '../sitelist/define'
 import { getOptions, actions } from '../../cmds'
+import Images from './Images'
 
 class Track extends Component {
   constructor(props) {
@@ -40,7 +41,7 @@ class Track extends Component {
         })}
       </div>}
       {loading && <ProgressBar />}
-
+      {!loading && <Images baseUrl={url} urls={urls} />}
       <Collection header='logs'>
         {logs.map((val, i) => {
           const str = JSON.stringify(val.data)
