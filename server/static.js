@@ -5,4 +5,5 @@ module.exports = [
   static(join(__dirname, '..', 'static')),
   static(join(dirname(require.resolve('materialize-css')), '..')),
   static(join(__dirname, '..', 'node_modules', 'font-awesome')),
+  static(join(__dirname, '..', 'tests')),
 ]

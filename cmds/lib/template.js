@@ -3,6 +3,8 @@ const Differencify = require('differencify').default
 const { baseUrl, urls } = require('./config')
 const url2folder = require('../../cmds/lib/url2folder')
 
+let browsers = []
+
 describe('url-', () => {
   urls.forEach(async (url, i) => {
     const testName = url2folder(url)
@@ -14,6 +16,7 @@ describe('url-', () => {
         executablePath, //if you use chrome or chrome canary
         //headless : false,
       })
+      browsers.push(browser)
       const page = await browser.newPage()
       await page.goto(url)
       const image = await page.screenshot({ fullPage: true })
@@ -24,4 +27,8 @@ describe('url-', () => {
       await differencify.cleanup()
     }, 60000)
   })
+})
+
+afterAll(() =>{
+  browsers.forEach((browser)=>browser.close())  
 })

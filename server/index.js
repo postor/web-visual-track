@@ -21,6 +21,7 @@ app.prepare()
     require('./io')(io, db)
 
     server.use(require('./static'))
+    server.use('/list-images', require('./image-list'))
 
     server.get('*', (req, res) => {
       return handle(req, res)

@@ -20,7 +20,7 @@ class SiteList extends Component {
     return (<div>
       <h1>My Sites:</h1>
       <Row>
-        {!!sites.length && sites.map((site, i) => (<Col s={12} m={6} key={i}>
+        {!!sites.length && sites.map((site, i) => (<Col l={6} m={12} key={i}>
           <SiteCard remove={() => set(SITE_LIST_KEY, [i, 1], 'splice')} site={site} index={i} />
         </Col>))}
         {!sites.length && (<CardPanel className="teal lighten-4 black-text">
