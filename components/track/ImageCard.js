@@ -11,6 +11,17 @@ export default (props) => {
       trigger={<CardTitle image={src} />}>
       <img src={src} />
     </Modal>)}
-  />)
+    actions={[(<Modal
+      header={url}
+      fixedFooter
+      trigger={<a>
+        <Icon name="eye" />
+        <i> View</i>
+      </a>}>
+      <img src={src} />
+    </Modal>)]}
+  >
+    <p>{url}</p>
+  </Card>)
 
 }

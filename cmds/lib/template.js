@@ -3,19 +3,20 @@ const Differencify = require('differencify').default
 const { baseUrl, urls } = require('./config')
 const url2folder = require('../../cmds/lib/url2folder')
 
+let launchConfig = {}
+if(require('fs').existsSync(require('path').join(__dirname,'..','..','launch.json'))){
+  launchConfig = require('../../launch')
+}
+
 let browsers = []
 
 describe('url-', () => {
   urls.forEach(async (url, i) => {
     const testName = url2folder(url)
     it(testName, async () => {
-      const executablePath = `C:\\Users\\josh\\AppData\\Local\\Google\\Chrome SxS\\Application\\chrome.exe`
       const differencify = new Differencify()
       const target = differencify.init({ testName, chain: false });
-      const browser = await target.launch({
-        executablePath, //if you use chrome or chrome canary
-        //headless : false,
-      })
+      const browser = await target.launch(launchConfig)
       browsers.push(browser)
       const page = await browser.newPage()
       await page.goto(url)

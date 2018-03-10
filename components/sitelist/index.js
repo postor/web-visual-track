@@ -42,7 +42,7 @@ class SiteList extends Component {
 
   add() {
     const { url } = this.state
-    const { set, sites } = this.props
+    const { set, sites=[] } = this.props
     if (url) {
       if (sites.some((x) => x.url == url)) {
         swal("Oops!", "Url already exist!", "error")

@@ -7,7 +7,7 @@ export default (props) => {
   const { remove, site = {}, index } = props
   const { pass, lastTrackTime } = site
   const className = typeof pass == 'undefined' ? 'blue-grey darken-1' : pass ? 'green darken-2' : 'red darken-1'
-  const word = `${moment.unix(lastTrackTime).fromNow()} ${pass ? 'Passed!' : 'Failed'}`
+  const word = `${lastTrackTime ? moment.unix(lastTrackTime).fromNow() : ''} ${typeof pass == 'undefined' ? ' Not run yet!' : pass ? 'Passed!' : 'Failed'}`
 
   return (<Card
     className={className}

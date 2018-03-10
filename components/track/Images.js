@@ -47,20 +47,48 @@ class Images extends Component {
     return (<div>
       {!!generated.length && (<Section>
         <h3>generated</h3>
-        <Row>
-          {generated.map((x, i) => (<Col s={6} m={4} l={3} key={i}>
-            <ImageCard {...x} />
-          </Col>))}
-        </Row>
+        <div className="cards-container">
+          {generated.map((x, i) => (<ImageCard key={i} {...x} />))}
+        </div>
       </Section>)}
       {!!diff.length && (<Section>
         <h3>diff</h3>
-        <Row>
-          {diff.map((x, i) => (<Col s={6} m={4} l={3} key={i}>
-            <ImageCard {...x} />
-          </Col>))}
-        </Row>
+        <div className="cards-container">
+          {diff.map((x, i) => (<ImageCard key={i} {...x} />))}
+        </div>
       </Section>)}
+      <style jsx global>{`
+      .cards-container {
+        column-break-inside: avoid;
+      }
+      .cards-container .card {
+        display: inline-block;
+        overflow: visible;
+      }
+      
+      @media only screen and (max-width: 600px) {
+        .cards-container {
+          -webkit-column-count: 1;
+          -moz-column-count: 1;
+          column-count: 1;
+        }
+      }
+      @media only screen and (min-width: 601px) {
+        .cards-container {
+          -webkit-column-count: 2;
+          -moz-column-count: 2;
+          column-count: 2;
+        }
+      }
+      @media only screen and (min-width: 993px) {
+        .cards-container {
+          -webkit-column-count: 3;
+          -moz-column-count: 3;
+          column-count: 3;
+        }
+      }
+      
+      `}</style>
     </div>)
   }
 }
