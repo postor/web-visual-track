@@ -22,6 +22,7 @@ app.prepare()
 
     server.use(require('./static'))
     server.use('/list-images', require('./image-list'))
+    server.use('/write-file', require('./write-file'))
 
     server.get('*', (req, res) => {
       return handle(req, res)

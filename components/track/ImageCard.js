@@ -12,6 +12,7 @@ export default (props) => {
       <img src={src} />
     </Modal>)}
     actions={[(<Modal
+      key="eye"
       header={url}
       fixedFooter
       trigger={<a>

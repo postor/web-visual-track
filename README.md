@@ -9,9 +9,9 @@ I want an easy way to perform visual tests, so come this project. Once deployed,
 ## features | 功能
 
 - crawl and generate tests | 爬取网站链接并且生成测试
-- run test | 运行测试
+- run test and view screen shots | 运行测试并浏览截图
 
-### todos | 要做的事情
+### todo | 要做的事情
 
 - url management
 - device
@@ -25,11 +25,11 @@ git clone https://github.com/postor/simple-visual-test.git
 cd simple-visual-test
 yarn && yarn dev
 
-#or production 
+# or production 
 yarn && yarn build && yarn start
 ```
 
-then open http://localhost:3000 to use
+then open http://localhost:3000 to use | 然后打开 http://localhost:3000 使用
 
 ![screenshot](./screenshot.png)
 

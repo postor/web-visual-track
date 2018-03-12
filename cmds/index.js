@@ -6,13 +6,16 @@ module.exports.actions = {
     title: 'Crawl',
     cmd: 'crawl.js',
     click: (param) => {
-      const { set, index, io, comp, url } = param
+      const { set, index, io, comp, url, site } = param
       comp.setState({ loading: true })
       io.emit('siteaction', { url, action: 'crawl' })
       io.on('siteactionlog', (data) => {
         if (data.result) {
           comp.setState({ loading: false })
-          set(`${SITE_LIST_KEY}.${index}.urls`, data.result)
+          set(`${SITE_LIST_KEY}.${index}`, {
+            ...site,
+            ...data.result,
+          })
         }
         set(`${SITE_LIST_KEY}.${index}.logs`, { data, date: new Date() }, 'unshift')
         set(`${SITE_LIST_KEY}.${index}.logs`, [10, 5], 'splice')

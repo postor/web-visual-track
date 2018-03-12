@@ -7,10 +7,14 @@ const flags = args.parse(process.argv);
 (async () => {
   if (flags.url) {
     const baseUrl = flags.url
-    const crawlAll = await require('./lib/crawl')(baseUrl)
-    const urls = await crawlAll(baseUrl)
-    await require('./lib/generate')(baseUrl, urls)
-    await require('./lib/jest')(baseUrl, true)
-    process.send && process.send({ result: urls })
+    try {
+      const crawlAll = await require('./lib/crawl')(baseUrl)
+      const urls = await crawlAll(baseUrl)
+      const siteConfig = await require('./lib/generate')({ url: baseUrl, urls })
+      await require('./lib/jest')(baseUrl, true)
+      process.send && process.send({ result: siteConfig })
+    } catch (e) {
+      console.log(e)
+    }
   }
 })()
