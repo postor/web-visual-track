@@ -2,18 +2,18 @@ import Icon from 'react-fontawesome'
 import { Card, CardTitle, Modal } from 'react-materialize'
 
 export default (props) => {
-  const { url, src } = props
+  const { src } = props
 
   return (<Card
     header={(<Modal
-      header={url}
+      header={src}
       fixedFooter
       trigger={<CardTitle image={src} />}>
       <img src={src} />
     </Modal>)}
     actions={[(<Modal
       key="eye"
-      header={url}
+      header={src}
       fixedFooter
       trigger={<a>
         <Icon name="eye" />
@@ -22,7 +22,7 @@ export default (props) => {
       <img src={src} />
     </Modal>)]}
   >
-    <p>{url}</p>
+    <p>{src}</p>
   </Card>)
 
 }

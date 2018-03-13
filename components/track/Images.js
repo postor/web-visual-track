@@ -29,10 +29,8 @@ class Images extends Component {
 
     function getDic(arr) {
       return arr.map((x) => {
-        const index = urlNames.findIndex((y) => x.includes(y))
         return {
           src: x,
-          url: urls[index],
         }
       })
     }

@@ -20,7 +20,6 @@ export default (Page) => (props) => (<Provider>
     <Header />
     <Container>
       <Page url={props.url} />
-      <p>{JSON.stringify(props)}</p>
     </Container>
     <Footer />
   </div>

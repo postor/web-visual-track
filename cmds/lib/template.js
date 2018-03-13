@@ -27,6 +27,7 @@ describe('t', () => {
         for (let i = 0; i < fnarr.length; i++) {
           await fnarr[i](page, href, gotoOptions)
         }
+        await page.goto(href, gotoOptions)
         const image = await page.screenshot({ fullPage: true })
         const result = await target.toMatchSnapshot(image)
         expect(result).toBe(true)
