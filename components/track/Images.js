@@ -43,16 +43,16 @@ class Images extends Component {
     } = this.state
 
     return (<div>
-      {!!generated.length && (<Section>
-        <h3>generated</h3>
-        <div className="cards-container">
-          {generated.map((x, i) => (<ImageCard key={i} {...x} />))}
-        </div>
-      </Section>)}
       {!!diff.length && (<Section>
         <h3>diff</h3>
         <div className="cards-container">
           {diff.map((x, i) => (<ImageCard key={i} {...x} />))}
+        </div>
+      </Section>)}
+      {!!generated.length && (<Section>
+        <h3>generated</h3>
+        <div className="cards-container">
+          {generated.map((x, i) => (<ImageCard key={i} {...x} />))}
         </div>
       </Section>)}
       <style jsx global>{`
