@@ -9,7 +9,11 @@ if (require('fs').existsSync(require('path').join(__dirname, '..', '..', 'launch
 }
 
 let browsers = []
+
 const cases = plaintify('', [], presets)
+if (!cases.length) {
+  cases.push({ key: '', fnarr: [] })
+}
 
 describe('t', () => {
   cases.forEach((casei) => {
@@ -29,11 +33,15 @@ describe('t', () => {
         }
         await page.goto(href, gotoOptions)
         const image = await page.screenshot({ fullPage: true })
-        const result = await target.toMatchSnapshot(image)
-        expect(result).toBe(true)
-        await page.close()
-        await browser.close()
-        await differencify.cleanup()
+        try {
+          const result = await target.toMatchSnapshot(image)
+          expect(result).toBe(true)
+        } catch (e) {
+          await page.close()
+          await browser.close()
+          await differencify.cleanup()
+          throw e
+        }
       }, 60000)
     })
   })

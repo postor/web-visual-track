@@ -2,11 +2,7 @@ const { exists, emptyDir, ensureDir, copyFile, writeJSON, writeFile, copy } = re
 const { join } = require('path')
 
 module.exports = async (options) => {
-  const { url, urls, presets = [{
-    name: 'devices',
-  }, {
-    name: 'languages',
-  }] } = options
+  const { url, urls, presets = [{ name: 'devices' }] } = options
   process.send && process.send('generateing test file')
   const folderName = require('./url2folder')(url)
   const folderPath = join(__dirname, '..', '..', 'tests', folderName)
