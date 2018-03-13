@@ -53,7 +53,7 @@ function plaintify(key, fnarr, presets) {
   const next = presets.concat().slice(1)
   const { name, list } = curModule
   const arr = list.map((it) => {
-    return plaintify(`${key}-${name}${it.name}-`, fnarr.concat([it.fn]), next)
+    return plaintify(`${key}-${it.name}-`, fnarr.concat([it.fn]), next)
   })
 
   return arr.reduce((p, n) => p.concat(n))
