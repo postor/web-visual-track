@@ -2,8 +2,6 @@ FROM ubuntu:16.04
 
 WORKDIR /app
 
-ADD . /app
-
 RUN apt-get update -y && apt-get install -yq curl sudo \ 
 && curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash - \
 && apt-get install -yq nodejs python2.7 make build-essential \
@@ -12,6 +10,8 @@ libexpat1 libfontconfig1 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 li
 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 \
 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 \
 ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget
+
+ADD . /app
 
 RUN npm install && npm run build
 
